@@ -2,22 +2,22 @@ import { BsInstagram } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { RiFacebookFill } from "react-icons/ri";
 
-type SocialLinkType = {
+export type SocialLinkType = {
     link:string,
     icon:React.ReactNode
 }
 
 const socialLink:SocialLinkType[] = [
     {
-        link:"www.facebook.com",
+        link:"https://www.facebook.com/",
         icon:<RiFacebookFill/>
     },
     {
-        link:"www.instagram.com",
+        link:"https://www.instagram.com/",
         icon:<BsInstagram/>
     },
     {
-        link:"www.linkedIn.com",
+        link:"https://www.linkedin.com/",
         icon:<FaLinkedinIn/>
     }
 ]
@@ -38,9 +38,9 @@ export default function Navbar(){
                 </span>
                 {
                     socialLink.map((items,index)=>{
-                        return <span className="h-[30px] w-[30px] flex justify-center items-center border border-black/50 rounded-lg transition-all duration-150 ease-linear hover:bg-black/80 hover:text-white" key={index}>
-                            <a href={items.link} target="_blank">{items.icon}</a>
-                        </span>
+                        return <a href={items.link} className="h-[30px] w-[30px] flex justify-center items-center border border-black/50 rounded-lg transition-all duration-150 ease-linear hover:bg-black/80 hover:text-white" key={index} target="_blank">
+                            {items.icon}
+                        </a>
                     })
                 }
             </div>
