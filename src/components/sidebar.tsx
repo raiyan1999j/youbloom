@@ -10,7 +10,7 @@ type PagesType = {
 
 const pages:PagesType[] = [
     {
-        link:"/main",
+        link:"/",
         icon:<FaHome />
     },
     {
