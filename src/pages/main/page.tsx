@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { InfoContainer } from "../../context/contextprovider";
 import { useNavigate } from "react-router-dom";
+import Banner from "./banner";
 
 export default function Main(){
     const context = useContext(InfoContainer);
@@ -17,6 +18,7 @@ export default function Main(){
     },[userLogin])
     return(
         <>
+        <Banner/>
         </>
     )
 }
