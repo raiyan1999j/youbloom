@@ -21,7 +21,7 @@ const socialLink:SocialLinkType[] = [
 export default function Footer(){
     return(
         <>
-        <div className="flex flex-row justify-between items-center px-10 w-full before:absolute before:top-0 before:h-[1px] before:w-[80%] before:left-[10%] before:bg-black/20 py-10">
+        <section className="mt-[120px] flex flex-row justify-between items-center px-10 w-full relative before:absolute before:top-0 before:h-[5px] before:w-[20%] before:left-1/2 before:-translate-x-1/2 before:bg-black/20 before:rounded-xl py-10">
             <div>
                 <h3 className="caprasimo text-[50px] text-transparent" style={{WebkitTextStroke:"2px black"}}>
                     youbloom
@@ -45,7 +45,7 @@ export default function Footer(){
                     </span>
                 </div>
             </div>
-        </div>
+        </section>
         </>
     )
 }
