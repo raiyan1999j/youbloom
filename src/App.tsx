@@ -4,6 +4,9 @@ import MainLayout from "./layouts/mainlayout";
 import Main from './pages/main/page.tsx';
 import Details from './pages/details/page.tsx';
 import Login from './pages/login/page.tsx';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -20,9 +23,11 @@ const router = createBrowserRouter([
 export default function App(){
   return(
     <>
+    <QueryClientProvider client={queryClient}>
     <ContextProvider>
       <RouterProvider router={router}/>
     </ContextProvider>
+    </QueryClientProvider>
     </>
   )
 }

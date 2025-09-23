@@ -1,4 +1,4 @@
-import { useContext, useState, type ChangeEvent } from "react"
+import { useContext, useEffect, useState, type ChangeEvent } from "react"
 import { InfoContainer } from "../../context/contextprovider"
 import { useNavigate } from "react-router-dom"
 
@@ -77,7 +77,7 @@ export default function Login(){
 
     if(!context) throw new Error("context error");
 
-    const {setUserLogin} = context;
+    const {userLogin,setUserLogin} = context;
 
     const navigate = useNavigate();
     const [userInfo,setUserInfo] = useState<UserInfoType>({
@@ -98,6 +98,7 @@ export default function Login(){
             setUserInfo({countryCode:null,mobileNumber:null,error:null});
 
             setUserLogin(true);
+            localStorage.setItem("userLogin","true");
             navigate("/")
         }
     }
@@ -107,6 +108,12 @@ export default function Login(){
 
         setUserInfo(prev=>({...prev,[name]:value}))
     }
+
+    useEffect(()=>{
+        if(userLogin){
+            navigate("/")
+        }
+    },[])
     return(
         <>
         <section className="px-20 mt-[100px]">
