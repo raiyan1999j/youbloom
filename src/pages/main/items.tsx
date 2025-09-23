@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { LuImageOff } from "react-icons/lu";
 import ImageValidation from "./imgvalidation";
+import { BiSolidCategory } from "react-icons/bi";
 
 type DataLimitaion = {
     currentPage: number,
@@ -29,6 +29,7 @@ type DataType = {
     url: string | null,
     thumbnailUrl: string | null
 }
+
 export default function Items(){
     const [dataLimitation,setLimitation] = useState<DataLimitaion>({
         currentPage:1,
@@ -44,7 +45,7 @@ export default function Items(){
     });
 
     const {isLoading,isError,data} = useQuery<UserData>({
-        queryKey:["userData"],
+        queryKey:["userData",dataLimitation.limit],
         queryFn:async ()=>{
             const getData = await axios(`https://jsonplaceholder.typicode.com/photos?_page=1&_start=${dataLimitation.start}&_limit=${dataLimitation.limit}`);
             let wrap;
@@ -80,7 +81,38 @@ export default function Items(){
             </div>
         </section>
 
-        <section className="px-20 mt-20">
+        <section className="mt-10 px-20">
+            <div className="flex flex-row items-center gap-x-2.5 justify-end nunito capitalize font-semibold px-10">
+                <div>
+                    <span className="text-black/80">
+                        <BiSolidCategory />
+                    </span>
+                </div>
+                <div>
+                    <p>
+                        show 
+                    </p>
+                </div>
+
+                <div>
+                    <select value={dataLimitation.limit} className="border-b border-b-black/80" onChange={(event)=>{setLimitation(prev=>({...prev,limit:parseInt(event.target.value)}))}}>
+                        {
+                            [...Array(10)].map((_,index)=>{
+                                return <option value={(index + 1)*10}>{(index + 1) * 10}</option>
+                            })
+                        }
+                    </select>
+                </div>
+
+                <div>
+                    <p>
+                        data per page
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section className="px-20 mt-10">
             <div className="grid grid-cols-3 gap-x-5 gap-y-[60px] px-10 py-10 h-[500px] overflow-y-scroll sideScrollbar">
                 {
                     data?.data.map((items,index)=>{
@@ -123,7 +155,7 @@ export default function Items(){
                 <div className="flex flex-row gap-x-5">
                     {
                         pagination.firstPhase.map((items,index)=>{
-                            return <button className="nunito px-2.5 py-1.5 flex justify-center items-center border border-black/20 rounded-lg transition-all duration-150 ease-linear hover:bg-black/20 hover:text-white hover:cursor-pointer" key={index}>
+                            return <button className={`nunito px-2.5 py-1.5 flex justify-center items-center border border-black/20 rounded-lg transition-all duration-150 ease-linear hover:bg-black/20 hover:text-white hover:cursor-pointer ${dataLimitation.currentPage === items?"bg-black/20 text-white":"bg-transparent"}`} key={index} onClick={()=>{setLimitation(prev=>({...prev,currentPage:items}))}}>
                                 {items}
                             </button>
                         })
@@ -138,7 +170,7 @@ export default function Items(){
                 </div>
                 <div className="flex flex-row gap-x-5">
                     {pagination.middlePhase.map((items,index)=>{
-                        return <button className="nunito px-2.5 py-1.5 flex justify-center items-center border border-black/20 rounded-lg transition-all duration-150 ease-linear hover:bg-black/20 hover:text-white hover:cursor-pointer" key={index}>
+                        return <button className={`nunito px-2.5 py-1.5 flex justify-center items-center border border-black/20 rounded-lg transition-all duration-150 ease-linear hover:bg-black/20 hover:text-white hover:cursor-pointer ${dataLimitation.currentPage === items?"bg-black/20 text-white":"bg-transparent"}`} key={index} onClick={()=>{setLimitation(prev=>({...prev,currentPage:items}))}}>
                             {items}
                         </button>
                     })}
@@ -152,7 +184,7 @@ export default function Items(){
                 </div>
                 <div className="flex flex-row gap-x-5">
                     {pagination.lastPhase.map((items,index)=>{
-                        return <button className="nunito px-2.5 py-1.5 flex justify-center items-center border border-black/20 rounded-lg transition-all duration-150 ease-linear hover:bg-black/20 hover:text-white hover:cursor-pointer" key={index}>
+                        return <button className={`nunito px-2.5 py-1.5 flex justify-center items-center border border-black/20 rounded-lg transition-all duration-150 ease-linear hover:bg-black/20 hover:text-white hover:cursor-pointer ${dataLimitation.currentPage === items?"bg-black/20 text-white":"bg-transparent"}`} key={index} onClick={()=>{setLimitation(prev=>({...prev,currentPage:items}))}}>
                             {items}
                         </button>
                     })}
