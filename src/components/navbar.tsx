@@ -25,14 +25,14 @@ const socialLink:SocialLinkType[] = [
 export default function Navbar(){
     return(
         <>
-        <nav className="w-full h-20 flex items-center border-b border-b-black/20 px-10">
-            <div className="flex items-center absolute left-1/2 -translate-x-1/2">
+        <nav className="w-full xl:h-20 py-5 flex xl:flex-row flex-col items-center border-b border-b-black/20 px-10">
+            <div className="flex items-center xl:absolute xl:left-1/2 xl:-translate-x-1/2">
                 <h3 className="caprasimo text-[50px] text-transparent" style={{WebkitTextStroke:"2px black"}}>
                     youbloom
                 </h3>
             </div>
 
-            <div className="ml-auto flex flex-row items-center gap-x-5">
+            <div className="xl:ml-auto flex flex-row items-center xl:justify-end justify-center gap-x-5">
                 <span className="border-b-2 border-b-black">
                     Follow us
                 </span>

@@ -37,11 +37,11 @@ export default function Details(){
                 <Error/>:
                 data?
                 <div className="flex flex-col w-full gap-y-20">
-                    <div className="flex items-center justify-center w-[50%] mx-auto text-center">
-                        <h1 className="caprasimo text-5xl capitalize text-black">
+                    <div className="flex items-center justify-center xl:w-[50%] mx-auto text-center">
+                        <h1 className="caprasimo xl:text-5xl text-2xl capitalize text-black">
                             {data?.title ?? "no data found"}
                         </h1>
-                        <h2 className="caprasimo text-[140px] absolute text-transparent tracking-wider" style={{WebkitTextStroke:"1px rgba(0,0,0,0.4)"}}>
+                        <h2 className="caprasimo xl:text-[140px] text-6xl absolute text-transparent tracking-wider" style={{WebkitTextStroke:"1px rgba(0,0,0,0.4)"}}>
                             Headings
                         </h2>
                     </div>

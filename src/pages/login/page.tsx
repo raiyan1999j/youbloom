@@ -119,24 +119,24 @@ export default function Login(){
         <section className="px-20 mt-[100px]">
             <div className="w-full">
                 <div className="flex justify-center items-center">
-                    <h1 className="absolute caprasimo text-[120px] text-transparent" style={{WebkitTextStroke:"1px rgba(0,0,0,0.5)"}}>
+                    <h1 className="absolute caprasimo xl:text-[120px] text-6xl text-transparent" style={{WebkitTextStroke:"1px rgba(0,0,0,0.5)"}}>
                         welcome
                     </h1>
 
-                    <h3 className="caprasimo font-bold text-6xl text-black/80">
+                    <h3 className="caprasimo font-bold xl:text-6xl text-3xl text-black/80">
                         youbloom
                     </h3>
                 </div>
 
                 <form onSubmit={formHandler}>
-                <div className="mt-20 w-[50%] mx-auto space-y-5">
+                <div className="mt-20 xl:w-[50%] mx-auto space-y-5">
                     <div>
                         <label htmlFor="mobileNumber" className="nunito font-bold text-black capitalize">
                             provide your mobile number
                         </label>
                     </div>
 
-                    <div className="flex flex-row items-end gap-x-5">
+                    <div className="flex xl:flex-row md:flex-row lg:flex-row flex-col xl:items-end gap-x-5 gap-y-5">
                         <div>
                             <select value={userInfo.countryCode ?? ""} name="countryCode" className="border border-black/50 nunito font-medium text-black/80 p-2.5 rounded-xl nunito text-justify" onChange={inputHandler}>
                                 {
@@ -149,7 +149,7 @@ export default function Login(){
                             </select>
                         </div>
                         
-                        <div className="h-10 w-[60%]">
+                        <div className="h-10 xl:w-[60%] md:w-[60%] lg:w-[60%]">
                             <input type="text" value={userInfo.mobileNumber ?? ""} id="mobileNumber" name="mobileNumber" className="h-full w-full border-b border-b-black/20 px-2.5 nunito placeholder:text-black/20 focus:outline-none focus:border-b-black/50" placeholder="mobile number" autoComplete="off" onChange={inputHandler}/>
                         </div>
                     </div>

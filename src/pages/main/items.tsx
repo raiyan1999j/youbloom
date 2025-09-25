@@ -97,14 +97,14 @@ export default function Items(){
 
     return( 
         <>
-        <section className="mt-20">
-            <div className="w-[50%] mx-auto h-10">
+        <section className="mt-20 px-20">
+            <div className="xl:w-[50%] w-full mx-auto h-10">
                 <input type="text" name="search" value={searchInput??""} placeholder="Search" className="nunito text-black/80 font-bold h-full w-full bg-gray-300/40 rounded-xl px-5 nunito placeholder:text-black/20 focus:outline-none focus:border-gray-400 focus:border" onChange={(event)=>{setSearchInput(event.target.value)}}/>
             </div>
         </section>
 
-        <section className="mt-10 px-20">
-            <div className="flex flex-row items-center gap-x-2.5 justify-end nunito capitalize font-semibold px-10">
+        <section className="mt-10 xl:px-20 px-10">
+            <div className="flex xl:flex-row items-center gap-x-2.5 xl:justify-end w-full nunito capitalize font-semibold xl:px-10">
                 <div>
                     <span className="text-black/80">
                         <BiSolidCategory />
@@ -126,7 +126,7 @@ export default function Items(){
                     </select>
                 </div>
 
-                <div>
+                <div className="xl:text-base text-sm">
                     <p>
                         data per page
                     </p>
@@ -134,7 +134,7 @@ export default function Items(){
             </div>
         </section>
 
-        <section className="px-20 mt-10">
+        <section className="xl:px-20 mt-10">
             {
                 isLoading?
                 <div className="flex justify-center items-center w-full h-[500px]">
@@ -145,7 +145,7 @@ export default function Items(){
                     <Error/>
                 </div>:
                 data?
-                <div className="grid grid-cols-3 gap-x-5 gap-y-[60px] px-10 py-10 h-[500px] overflow-y-scroll sideScrollbar">
+                <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-[60px] px-10 py-10 h-[500px] overflow-y-scroll sideScrollbar">
                 {
                     data.data.map((items,index)=>{
                         return <div className="shadow-black/20 shadow-sm rounded-xl space-y-5 transition-all duration-150 ease-linear hover:shadow-black/80" key={index}>
@@ -185,8 +185,8 @@ export default function Items(){
             
         </section>
 
-        <section className="px-20">
-            <div className="flex flex-row justify-end items-end gap-x-5 w-full px-10">
+        <section className="xl:px-20 md:px-20 px-10">
+            <div className="flex flex-row xl:flex-nowrap flex-wrap xl:justify-end md:justify-end items-end xl:gap-x-5 gap-y-5 gap-x-2.5 w-full xl:px-10">
                 {
                     generatePages.map((items,index)=>{
                         return items === "..."?
