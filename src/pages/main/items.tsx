@@ -5,6 +5,7 @@ import ImageValidation from "./imgvalidation";
 import { BiSolidCategory } from "react-icons/bi";
 import Loader from "../../components/ui/loader";
 import Error from "../../components/ui/error";
+import { useNavigate } from "react-router-dom";
 
 type DataLimitaion = {
     currentPage: number,
@@ -27,6 +28,8 @@ type DataType = {
 }
 
 export default function Items(){
+    const navigate = useNavigate();
+
     const [dataLimitation,setLimitation] = useState<DataLimitaion>({
         currentPage:1,
         start:0,
@@ -169,7 +172,7 @@ export default function Items(){
                             </div>
 
                             <div className="flex justify-end px-2.5 py-5">
-                                <button type="button" className="px-2.5 py-1.5 bg-sky-400 rounded-xl nunito text-white font-bold capitalize transition-all duration-150 ease-linear hover:bg-sky-600">
+                                <button type="button" className="px-2.5 py-1.5 bg-sky-400 rounded-xl nunito text-white font-bold capitalize transition-all duration-150 ease-linear hover:bg-sky-600" onClick={()=>{navigate(`/details/${items.id}`)}}>
                                     details
                                 </button>
                             </div>
